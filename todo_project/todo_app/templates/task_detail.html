@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Task — {{ task.title }}{% endblock %}
+
+{% block content %}
+  <h2>{{ task.title }}</h2>
+  <p class="muted">Created: {{ task.created_at|date:"SHORT_DATETIME_FORMAT" }}</p>
+  {% if task.due_date %}
+    <p class="muted">Due: {{ task.due_date|date:"SHORT_DATETIME_FORMAT" }}</p>
+  {% endif %}
+
+  <div>
+    <p>{{ task.description|linebreaks }}</p>
+  </div>
+
+  <p>
+    <a href="{% url 'task_update' task.pk %}">Edit</a> |
+    <a href="{% url 'task_delete' task.pk %}">Delete</a> |
+    <a href="{% url 'task_list' %}">Back to list</a>
+  </p>
+
+  {% if not task.completed %}
+    <form action="{% url 'task_mark_complete' task.pk %}" method="post" style="display:inline">
+      {% csrf_token %}
+      <button type="submit">Mark as complete</button>
+    </form>
+  {% else %}
+    <p><strong>Completed</strong> — {{ task.completed_at|date:"SHORT_DATETIME_FORMAT" }}</p>
+  {% endif %}
+{% endblock %}

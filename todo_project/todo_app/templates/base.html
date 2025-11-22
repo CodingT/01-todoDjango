@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% block title %}Todo App{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'todo_app/styles.css' %}" />
+    {% block head %}{% endblock %}
+    <style>
+        /* Minimal default styles so pages look acceptable out of the box */
+        body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; margin: 0; padding: 0; background: #f7f7f8; }
+        .container { max-width: 900px; margin: 2rem auto; padding: 1rem; background: white; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.06); }
+        header { padding: 1rem 0; }
+        nav a { margin-right: 1rem; color: #2b6cb0; text-decoration: none; }
+        .muted { color: #6b7280; }
+        .task-completed { text-decoration: line-through; color: #6b7280; }
+    </style>
+</head>
+<body>
+    <header class="container">
+        <h1>{% block header %}Todo App{% endblock %}</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="{% url 'task_list' %}">Tasks</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        {% block content %}{% endblock %}
+    </main>
+
+    {% comment %} Optional React root — keep if you plan to render a JS app inside Django templates. {% endcomment %}
+    <div id="root" style="display:none"></div>
+
+    {% block scripts %}
+    <!-- Example: include a bundled React app or other static scripts here -->
+    <!-- <script src="{% static 'todo_app/js/main.js' %}"></script> -->
+    {% endblock %}
+</body>
+</html>

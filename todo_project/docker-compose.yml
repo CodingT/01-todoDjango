@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      # Mount the project into the container for live code editing (optional)
+      - ./:/app:delegated
+      # Persist the SQLite database on the host under ./data
+      - ./data:/data
+    environment:
+      - SQLITE_FILE=/data/db.sqlite3
+    restart: unless-stopped

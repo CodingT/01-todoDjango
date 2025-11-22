@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Home — Todo App{% endblock %}
+
+{% block header %}
+  Welcome to your Todo App
+{% endblock %}
+
+{% block content %}
+  <p class="muted">A tiny example home page. Use the Tasks view to create and manage items.</p>
+
+  <p>
+    <a href="{% url 'task_list' %}">View tasks</a>
+  </p>
+
+  <section>
+    <h2>Quick start</h2>
+    <ol>
+      <li>Create tasks in the Tasks page.</li>
+      <li>Mark tasks complete or edit details.</li>
+      <li>Optional: connect a React/JS frontend for a richer UI.</li>
+    </ol>
+  </section>
+{% endblock %}

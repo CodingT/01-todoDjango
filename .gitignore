@@ -1,0 +1,45 @@
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+venv.bak/
+todoVenv/
+todoEnv/
+
+# Python packaging
+build/
+dist/
+*.egg-info/
+pip-wheel-metadata/
+
+# Django and local settings
+*.log
+local_settings.py
+db.sqlite3
+
+# Project-level sqlite data directory used by Docker
+/todo_project/data/
+
+# Pytest / coverage
+.pytest_cache/
+.coverage
+coverage.xml
+
+# IDEs / editors
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Node
+node_modules/
+

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Tasks — Todo App{% endblock %}
+
+{% block content %}
+  <h2>Tasks</h2>
+
+  {% if tasks %}
+    <ul>
+      {% for task in tasks %}
+        <li>
+          <strong class="{% if task.completed %}task-completed{% endif %}">
+            <a href="{% url 'task_detail' task.pk %}">{{ task.title }}</a>
+          </strong>
+          {% if task.due_date %}
+            <span class="muted"> — due {{ task.due_date|date:"SHORT_DATETIME_FORMAT" }}</span>
+          {% endif %}
+          {% if task.completed %}
+            <span class="muted"> (completed)</span>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+  <p>No tasks yet. <a href="{% url 'task_create' %}">Create one</a>.</p>
+  {% endif %}
+
+  <p>
+    <a href="{% url 'task_create' %}">+ New task</a>
+  </p>
+
+{% endblock %}
